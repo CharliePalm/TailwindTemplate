@@ -6,4 +6,5 @@ To set this repo up with a new name:
   
     git clone https://github.com/CharliePalm/TailwindTemplate
     mv TailwindTemplate {{new name}}
+    cd {{new name}}
     npm run setup --name={{new name}}

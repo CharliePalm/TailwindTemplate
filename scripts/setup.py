@@ -39,3 +39,5 @@ if __name__ == "__main__":
 
     # Run the update function
     update_website_template(website_name)
+    os.system('rm -r -f .git')
+    os.system('git init')
