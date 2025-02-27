@@ -1,0 +1,15 @@
+<label class="inline-flex items-center cursor-pointer z-10">
+    <input
+      type="radio"
+      class="peer hidden"
+    />
+    <div class="w-5 h-5 border border-gray-400 rounded-full flex items-center justify-center" *ngIf="mode == 'simple'">
+      <div *ngIf="selected" class="w-3.5 h-3.5 bg-primary rounded-full absolute"></div>
+    </div>
+    <span class="text-gray-700" *ngIf="mode == 'simple'">{{ label }}</span>
+    <label 
+        *ngIf="mode == 'fancy'" 
+        class="cursor-pointer flex ml-0 items-center justify-center truncate uppercase select-none font-semibold text-md rounded-full py-2 transition duration-300 ease-in-out"
+        [ngClass]="{'text-label': !selected, 'text-white': selected }"
+    >{{ label }}</label>
+</label>

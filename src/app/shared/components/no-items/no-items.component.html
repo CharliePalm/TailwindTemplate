@@ -1,0 +1,13 @@
+<div class="text-center">
+    <div class="text-3xl mt-16 h-2/5">
+        {{title ?? 'No items found'}}
+    </div>
+    <div class="h-14 relative flex justify-center items-center">
+        <div class="absolute" *ngIf="displayContactReroute">
+            If you think this is a mistake, <a (click)="router.navigate(['contact'])" class="underline italic font-bold cursor-pointer hover:text-xl transition-all ease-in-out duration-500">contact</a> Charlie and Brenna.
+        </div>
+    </div>
+    <div class="pt-12">
+        <ng-content></ng-content>
+    </div>
+</div>

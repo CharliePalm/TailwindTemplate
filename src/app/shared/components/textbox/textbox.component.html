@@ -1,0 +1,45 @@
+<div class="mb-4" *ngIf="size == 'rg'">
+    <app-label>
+        <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
+    </app-label>
+    <div class="mt-1 w-full">
+        <input
+            *ngIf="type != 'number' && type != 'currency'"
+            [formControlName]="control"
+            class="w-full px-4 py-2 border text-label rounded-lg focus:outline-none focus:ring-2 focus:border-primary text-wrap"
+            [readonly]="readonly"
+            [type]="type"
+        />
+        <input
+            *ngIf="type == 'number'"
+            [formControlName]="control"
+            class="w-full px-4 py-2 border text-label rounded-lg focus:outline-none focus:ring-2 focus:border-primary text-pretty"
+            [readonly]="readonly"
+            appNumeric
+        />
+        <!-- <input
+            *ngIf="type == 'currency'"
+            [formControlName]="control"
+            class="w-full px-4 py-2 text-label border rounded-lg focus:outline-none focus:ring focus:border-primary text-wrap"
+            [readonly]="readonly"
+            [type]="'number'"
+            currency
+    /> -->
+    </div>
+</div>
+<div class="mb-4 h-56" *ngIf="size == 'lg'">
+    <app-label [class]="labelClass">
+        <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
+    </app-label>
+    <ng-container>
+        <textarea
+            [formControlName]="control"
+            class="w-full h-full px-4 py-2 mt-1 text-label border rounded-lg focus:outline-none focus:ring-2 focus:border-primary text-wrap resize-none"
+            [readonly]="readonly"
+        ></textarea>
+    </ng-container>
+</div>
+
+<ng-template #tempOutlet>
+    <ng-content></ng-content>
+</ng-template>

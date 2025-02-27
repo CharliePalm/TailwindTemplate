@@ -1,0 +1,18 @@
+<button
+  class="sidebar-toggle-button"
+  [ngClass]="{ active: expanded }"
+  (click)="toggleSidebar()"
+>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
+
+<aside class="sidebar" [ngClass]="{open : expanded, closed : !expanded, noscroll : this.expanded}">
+    <div class="grid grid-cols-1">
+        <div *ngFor="let option of options">
+            <i [ngClass]="{open : expanded, closed : !expanded}" (click)="selected(option)">about</i>
+        </div>
+    </div>
+</aside>
+  
