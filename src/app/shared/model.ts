@@ -27,3 +27,9 @@ export interface Toast {
     type: 'success' | 'error' | 'info' | 'warning';
     id: number;
 }
+
+// most of my sites use dynamo DB with id and clientId - feel free to modify
+export interface DynamoItem {
+    id: string,
+    clientId: string,
+}

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Host, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { SidebarOption } from '../../model';
 import { CommonModule } from '@angular/common';
 
@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
     this.toggleSidebar();
     this.optionSelected.emit(option);
   }
-
+  // todo - rewrite
   @HostListener("window:resize", []) windowSizeCheck() {
     if (this.expanded) this.toggleSidebar();
     this.isMobile = window.outerWidth <= 850 || window.innerWidth <= 850;

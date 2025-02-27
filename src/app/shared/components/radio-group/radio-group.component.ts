@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RadioButtonComponent } from '../radio-button/radio-button.component';
 import { AbstractControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'app-radio-group',
   templateUrl: './radio-group.component.html',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, RadioButtonComponent, LabelComponent],
 })
 export class RadioGroupComponent implements OnInit {
   @Input() options!: { [key: string]: boolean | string | number };

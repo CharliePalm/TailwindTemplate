@@ -4,10 +4,10 @@ import { catchError, map, Observable, of, shareReplay, switchMap, tap } from 'rx
 import { AuthService } from './auth.service';
 import { ToastService } from './toast.service';
 import { v4 as uuid } from 'uuid';
-import { DataType, EventSchema, CalendarEvent, DynamoItem, UploadType, UnsortedDynamoItem, OtherItem, SchemaItem } from '../shared/model';
+import { DynamoItem } from '../../shared/model';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { LocalDataStore } from 'src/environments/localData';
+import { LocalDataStore } from '../../../environments/localData';
 
 const headers = {
   // 'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ const headers = {
   providedIn: 'root',
 })
 export class APIService {
-  private url = (fn: string): string => environment.url+fn;
+  private url = (fn: string): string => environment.url + fn;
   private headers = (token: string): {} => ({ headers: {...headers, Authorization: 'Bearer ' + token } })
   private localDataStore = new LocalDataStore();
   constructor(
@@ -26,12 +26,12 @@ export class APIService {
     private toastService: ToastService,
   ) {}
 
-  public loadClientData(): Observable<UnsortedDynamoItem[]> {
+  public loadClientData(): Observable<DynamoItem[]> {
     if (!environment.production) return of(this.localDataStore.mockData);
     return this.authService.getToken().pipe(
       switchMap((token) => {
         return token ?
-          this.http.get<UnsortedDynamoItem[]>(this.url('load'), this.headers(token)) :
+          this.http.get<DynamoItem[]>(this.url('load'), this.headers(token)) :
           of(undefined);
       }),
       map((v) => {
@@ -74,10 +74,9 @@ export class APIService {
     );
   }
 
-  public putObj(event: CalendarEvent | DynamoItem | OtherItem | SchemaItem, type: DataType): Observable<boolean> {
+  public putObj(event: DynamoItem): Observable<boolean> {
     if (!environment.production) return this.localDataStore.addToLocalData(event);
     event.clientId = this.authService.userId!;
-    event.type = type;
     return this.authService.getToken().pipe(
       switchMap((token) => {
         return token ?
@@ -99,7 +98,7 @@ export class APIService {
     );
   }
 
-  public uploadImage(image: File, uploadType: UploadType, eventId?: string): Observable<boolean> {
+  public uploadImage(image: File, uploadType: string, eventId?: string): Observable<boolean> {
     if (!environment.production) return of(!!image);
     return this.authService.getToken().pipe(
       switchMap((token) => {

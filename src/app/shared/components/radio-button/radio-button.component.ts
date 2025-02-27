@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-radio-button',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './radio-button.component.html'
 })
 export class RadioButtonComponent {

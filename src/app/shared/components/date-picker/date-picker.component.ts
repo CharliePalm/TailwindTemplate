@@ -1,11 +1,15 @@
 import { Component, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
-import { ControlContainer, FormGroupDirective } from '@angular/forms';
+import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { IconType } from '../../model';
+import { CommonModule } from '@angular/common';
+import { IconComponent } from '../icon/icon.component';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, IconComponent, LabelComponent],
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class DatePickerComponent {

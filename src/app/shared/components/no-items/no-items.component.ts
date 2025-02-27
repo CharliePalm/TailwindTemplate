@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-no-items',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './no-items.component.html'
 })
 export class NoItemsComponent {

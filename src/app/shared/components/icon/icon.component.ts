@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { IconType } from '../../model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
 })
 export class IconComponent {
   @Input() type!: IconType;

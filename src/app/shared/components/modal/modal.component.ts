@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
 })
 export class ModalComponent {
   @Input() title: string = '';      // Optional modal title
