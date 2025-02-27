@@ -8,19 +8,21 @@
         <ng-container *ngIf="!loading; else loader">
             <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
         </ng-container>
+        <ng-template #loader><app-loader size="sm"></app-loader></ng-template>
     </button>
 </ng-container>
 <ng-container *ngIf="type == 'text'">
     <div
-        class="px-4 py-2 font-semibold text-secondary-text hover:text-primary duration-300 transition ease-in-out hover:cursor-pointer"
+        class="px-4 py-2 font-semibold text-secondary-text hover:text-primary duration-300 transition ease-in-out hover:cursor-pointer disabled:cursor-auto"
+        [attr.disabled]="disabled || loading"
     >
         <ng-container *ngIf="!loading; else loader">
             <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
         </ng-container>
+        <ng-template #loader><app-loader size="sm"></app-loader></ng-template>
     </div>
 </ng-container>
 
 <ng-template #tempOutlet>
     <ng-content></ng-content>
 </ng-template>
-<ng-template #loader><app-loader size="w-8 h-8"></app-loader></ng-template>

@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   imports: [CommonModule],
 })
 export class LoaderComponent {
-  @Input() size?: string = 'w-20 h-20'; // Default size (Tailwind utility classes)
+  @Input() size?: 'sm' | 'md' | 'lg';
 }

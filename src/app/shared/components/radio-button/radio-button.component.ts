@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'app-radio-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LabelComponent],
   templateUrl: './radio-button.component.html'
 })
 export class RadioButtonComponent {

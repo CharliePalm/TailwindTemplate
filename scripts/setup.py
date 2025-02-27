@@ -22,12 +22,16 @@ def update_website_template(name: str):
 
     # paths to the specific files to be updated
     package_json = os.path.join(base_dir, "package.json")
+    package_lock = os.path.join(base_dir, "package_lock.json")
     app_component_ts = os.path.join(base_dir, "src", "app", "app.component.ts")
     index_html = os.path.join(base_dir, "src", "index.html")
+    angular_json = os.path.join(base_dir, "angular.json")
 
     replace_in_file(package_json, '"name": "template"', f'"name": "{name.lower()}"')
     replace_in_file(app_component_ts, "title = 'Template';", f"title = '{cleaned_name}';")
     replace_in_file(index_html, "<title>Template</title>", f"<title>{cleaned_name}</title>")
+    replace_in_file(package_lock, 'template', cleaned_name)
+    replace_in_file(angular_json, "Template", cleaned_name)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

@@ -1,3 +1,10 @@
-<div class="flex items-center justify-center ml-auto mr-auto mt-auto" [ngClass]="size">
-    <div [ngClass]="size" class="border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
-</div>  
+
+<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-8 h-8" *ngIf="'sm' == size">
+    <div class="border-4 border-gray-300 border-t-primary rounded-full animate-spin w-8 h-8"></div>
+</div>
+<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-24 h-24" *ngIf="'md' == size || !size">
+    <div class="border-4 border-gray-300 border-t-primary rounded-full animate-spin w-24 h-24"></div>
+</div>
+<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-48 h-48" *ngIf="'lg' == size">
+    <div class="border-4 border-gray-300 border-t-primary rounded-full animate-spin w-48 h-48"></div>
+</div>
