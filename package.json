@@ -9,7 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "clone": "python3 scripts/setup.py \"$npm_config_name\" && npm i"
+    "clone": "python3 scripts/setup.py \"$npm_config_name\""
   },
   "private": true,
   "dependencies": {

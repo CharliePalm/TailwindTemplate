@@ -42,5 +42,6 @@ if __name__ == "__main__":
     def check(result):
       if result != 0: exit(result)
     check(os.system(f'cd .. && cp -r TailwindTemplate {website_name}'))
-    check(os.system(f'cd ../{website_name} && rm -r -f .git && git init'))
+    check(os.system(f'cd ../{website_name} && rm -r -f .git && git init && npm i'))
     update_website_template(website_name)
+    print('Cloning complete. Happy coding :)')
