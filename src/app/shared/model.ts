@@ -1,8 +1,8 @@
 export enum TextBoxType {
-    Password = 'password',
-    Number = 'number',
-    Currency = 'currency',
-    None = '',
+  Password = 'password',
+  Number = 'number',
+  Currency = 'currency',
+  None = '',
 }
 
 export enum IconType {
@@ -19,17 +19,17 @@ export enum IconType {
 }
 
 export enum SidebarOption {
-    // fill in here to use sidebar
+  // fill in here to use sidebar/header component
 }
 
 export type EventSchema = { [key: string]: 'S' | 'N' | 'D' | 'I' | 'B' | 'T' | { [key: string]: string } | string[] }; // string obj/array for select
 
 export interface Toast {
-    message: string;
-    type: 'success' | 'error' | 'info' | 'warning';
-    id: number;
-    duration: number,
-    active?: boolean;
+  message: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+  id: number;
+  duration: number,
+  active?: boolean;
 }
 
 // most of my sites use dynamo DB with id and clientId - feel free to modify
