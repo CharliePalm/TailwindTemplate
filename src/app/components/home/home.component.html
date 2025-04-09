@@ -81,6 +81,17 @@
         </div>
         <div class="w-10/12 rounded-lg bg-gray-600 p-8">
             <div class="text-4xl text-center w-full p-4">
+                Drag and Drop
+            </div>
+            <app-drag-drop
+              [control]="form.controls['12']"
+              [options]="['Option A', 'Option B', 'Option C']"
+            >
+              Select your options:
+            </app-drag-drop>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
                 Toast
             </div>
             <div class="grid grid-cols-2 grid-rows-2 w-full gap-6">

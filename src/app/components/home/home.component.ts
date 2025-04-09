@@ -3,19 +3,19 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { CheckboxComponent } from "../../shared/components/checkbox/checkbox.component";
 import { DatePickerComponent } from "../../shared/components/date-picker/date-picker.component";
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from "../../shared/components/dropdown/dropdown.component";
 import { IconType } from '../../shared/model';
 import { IconComponent } from '../../shared/components/icon/icon.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
-import { RadioButtonComponent } from '../../shared/components/radio-button/radio-button.component';
 import { RadioGroupComponent } from '../../shared/components/radio-group/radio-group.component';
 import { TextboxComponent } from '../../shared/components/textbox/textbox.component';
 import { ToastComponent } from '../../shared/components/toast/toast.component';
 import { ToastService } from '../../shared/service/toast.service';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { CheckboxGroupComponent } from 'src/app/shared/components/checkbox-group/checkbox-group.component';
+import { DragAndDropComponent } from 'src/app/shared/components/drag-and-drop/drag-drop.component';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +36,7 @@ import { CheckboxGroupComponent } from 'src/app/shared/components/checkbox-group
     TextboxComponent,
     ToastComponent,
     CheckboxGroupComponent,
+    DragAndDropComponent,
   ],
   standalone: true,
 })
@@ -56,6 +57,7 @@ export class HomeComponent {
       'option 2': true,
       'option 3': false,
     }),
+    '12': [undefined],
   });
   IconType = Object.keys(IconType);
   constructor(
