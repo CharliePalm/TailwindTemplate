@@ -1,0 +1,96 @@
+<ng-container *ngIf="form">
+    <div class="flex justify-center items-center w-full flex-col gap-4 text-white" [formGroup]="form">
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Buttons
+            </div>
+            <div class="w-full flex justify-center items-center">
+              <div class="w-1/2">
+                  <app-button >Enabled Button</app-button>
+                  <app-button [disabled]="true">Disabled button</app-button>
+                  <app-button [loading]="true">Loading button</app-button>
+              </div>
+            </div>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Checkbox
+            </div>
+            <div class="text-2xl py-2">Single checkbox:</div>
+            <app-checkbox [control]="form.controls['2']">Checkbox label</app-checkbox>
+            <div class="text-2xl pt-4">Checkbox group:</div>
+            <app-checkbox-group [group]="form.controls['11']"></app-checkbox-group>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Date Picker
+            </div>
+            <app-date-picker control="2" class="text-primary">Pick date</app-date-picker>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Dropdown
+            </div>
+            <app-dropdown [options]="['Option 1', 'Option 2', 'Option 3']" [control]="form.controls['3']"></app-dropdown>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Icons
+            </div>
+            <div class="flex justify-center items-center">
+                <div *ngFor="let icon of IconType" >
+                    <app-icon [type]="$any(icon)"></app-icon>
+                </div>
+            </div>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Loader
+            </div>
+            <app-loader size="sm" class="p-4"></app-loader>
+            <app-loader size="md" class="p-4"></app-loader>
+            <app-loader size="lg" class="p-4"></app-loader>
+            <app-loader size="xl" class="p-4"></app-loader>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Modal
+            </div>
+            <app-button (click)="modal.open()">Open modal</app-button>
+            <app-modal title="Modal title" #modal><div>Modal body</div></app-modal>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Radio Group
+            </div>
+            <app-radio-group mode="simple" [options]="{'option 1': 1, 'option 2': 2, 'option 3': 3}" [control]="$any(form.get('4'))">Simple radio group</app-radio-group>
+            <app-radio-group mode="simple" [stacked]="true" [options]="{'option 1': 1, 'option 2': 2, 'option 3': 3}" [control]="$any(form.get('10'))">Stacked radio group</app-radio-group>
+            <app-radio-group mode="fancy" [options]="{'option 1': 1, 'option 2': 2, 'option 3': 3}" [control]="$any(form.get('5'))">Fancy radio group</app-radio-group>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Header/Sidebar component
+            </div>
+            <app-header></app-header>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Textbox
+            </div>
+            <app-textbox [control]="form.controls['6']">Textbox Label</app-textbox>
+        </div>
+        <div class="w-10/12 rounded-lg bg-gray-600 p-8">
+            <div class="text-4xl text-center w-full p-4">
+                Toast
+            </div>
+            <div class="grid grid-cols-2 grid-rows-2 w-full gap-6">
+                <app-button (click)="toastService.show('Success!', 'success')">Success</app-button>
+                <app-button (click)="toastService.show('Error :(', 'error')">Error</app-button>
+
+                <app-button (click)="toastService.show('Warning :/', 'warning')">Warning</app-button>
+                <app-button (click)="toastService.show('Info :|', 'info')">Info</app-button>
+            </div>
+            <app-toast></app-toast>
+        </div>
+    </div>
+</ng-container>

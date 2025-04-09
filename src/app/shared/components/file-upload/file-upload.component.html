@@ -1,0 +1,31 @@
+<div class="mb-4">
+  <app-label>
+      <ng-content></ng-content>
+  </app-label>
+  <div
+    class="border-2 border-dashed border-secondary-text rounded-lg p-6 text-center bg-gray-100 hover:bg-gray-200 transition-all"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+    [ngClass]="{ 'border-primary bg-primary-tinted': isDragging }"
+  >
+    <div class="text-secondary-text mb-4">
+      <p *ngIf="!fileName" class="pb-2">Drag and drop a file here or:</p>
+      <p *ngIf="fileName" class="pb-2">Selected file: {{ fileName }}</p>
+      <img [src]="src" class="max-w-48 max-h-48 ml-auto mr-auto" *ngIf="fileName">
+    </div>
+    <div class="flex justify-center items-center">
+      <div class="w-48">
+        <app-button (click)="!!fileName ? clearSelection() : fileInput.click()">
+          {{!!fileName ? 'Clear Selection' : 'Browse'}}
+        </app-button>
+      </div>
+    </div>
+    <input #fileInput type="file" (change)="onFileSelected($event)" class="hidden" [accept]="accept"/>
+    <ng-container *ngIf="file">
+      <app-button *ngIf="displayUploadButton" (click)="uploadFile()" class="w-48 mt-4">
+        Upload
+      </app-button>
+    </ng-container>
+  </div>
+</div>

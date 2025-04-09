@@ -14,6 +14,7 @@ export class RadioGroupComponent implements OnInit {
   @Input() options!: { [key: string]: boolean | string | number };
   @Input() control!: AbstractControl;
   @Input() mode: 'simple' | 'fancy' = 'simple';
+  @Input() stacked = false;
   public optionsArr!: { label: string; value: boolean | string | number }[];
   public selectedIndex!: number;
   ngOnInit(): void {
@@ -21,12 +22,15 @@ export class RadioGroupComponent implements OnInit {
     if (!this.control) {
       throw Error('an abstract control is required for radio group');
     }
+    if (this.stacked && this.mode === 'fancy') {
+      throw Error('fancy stacked radio group not implemented');
+    }
     this.selectedIndex = this.optionsArr.findIndex((option) => this.control.value === option.value);
   }
 
   getWrapperStyle(): object {
    return {
-    '--tw-translate-x': (this.selectedIndex > 0 ? (this.selectedIndex + '00%') : '0%'),
+    '--tw-translate-x': this.selectedIndex + '00%',
     'width': (100 / this.optionsArr.length) + `%`,
     'z-index': '0',
    };

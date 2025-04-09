@@ -14,6 +14,8 @@ export enum IconType {
   Edit = 'Edit',
   RightArrowShort = 'RightArrowShort',
   LeftArrowShort = 'LeftArrowShort',
+  DownArrowShort = 'DownArrowShort',
+  UpArrowShort = 'UpArrowShort',
 }
 
 export enum SidebarOption {
@@ -26,6 +28,8 @@ export interface Toast {
     message: string;
     type: 'success' | 'error' | 'info' | 'warning';
     id: number;
+    duration: number,
+    active?: boolean;
 }
 
 // most of my sites use dynamo DB with id and clientId - feel free to modify

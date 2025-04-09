@@ -9,9 +9,8 @@
     [value]="selectedDate ? (selectedDate | date:'MM/dd/yyyy') : ''"
     class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-primary cursor-pointer"
     [formControlName]="control"
-    (focus)="toggleCalendar()"
   >
-  
+
   <!-- Calendar Overlay -->
   <div *ngIf="showCalendar" class="absolute mt-2 bg-white border rounded-lg shadow-lg z-20">
     <!-- Header with Month Navigation -->
@@ -47,4 +46,3 @@
     </div>
   </div>
 </div>
-  

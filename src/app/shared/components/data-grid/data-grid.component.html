@@ -1,0 +1,60 @@
+<div *ngIf="!data.length && addable" class="flex justify-center items-center">
+    Nothing to display - click the <app-icon [type]="IconType.Plus" class="p-2"></app-icon> button to get started.
+</div>
+<div class="grid gap-4 mt-10 grid-cols-1" [ngClass]="{
+  'lg:grid-cols-3': data.length === 3,
+  'sm:grid-cols-2': data.length >= 2,
+  'md:grid-cols-3 lg:grid-cols-4': data.length > 3,
+  'md:w-64 ml-auto mr-auto': data.length == 0 || data.length == 1
+}">
+    <ng-container *ngIf="editable">
+        <div *ngFor="let dat of data" class="min-h-20 bg-gray-200 hover:bg-white rounded-lg shadow hover:cursor-pointer transition ease-in-out duration-300" (click)="open.emit(dat)">
+            <div *ngIf="deletable && entryDeletable(dat)" class="relative z-10" (click)="openAreYouSureModal(dat, $event)">
+                <app-icon [type]="IconType.Trash" class="absolute h-4 opacity-30 hover:opacity-100 hover:text-warning ease-in-out duration-300 top-2 right-2"></app-icon>
+            </div>
+            <div class="w-full h-full">
+                <div class="h-full flex items-center justify-center p-8 z-10">
+                    <div class="text-lg font-bold text-primary text-center mb-3 italic">{{ dat.title }}</div>
+                </div>
+            </div>
+            <div class="relative" *ngIf="hasSubtitle(dat) || dataSubtitle && dataSubtitle(dat)">
+                <div class="absolute flex w-full text-sm text-secondary-text justify-center items-center bottom-2">{{ hasSubtitle(dat) ? dat.subtitle : dataSubtitle!(dat) }}</div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!editable">
+        <div *ngFor="let dat of data" class="min-h-20 bg-gray-200 rounded-lg shadow" (click)="open.emit(dat)">
+            <div *ngIf="deletable && entryDeletable(dat)" class="relative z-10" (click)="openAreYouSureModal(dat, $event)">
+                <app-icon [type]="IconType.Trash" class="absolute h-4 opacity-30 hover:opacity-100 hover:text-warning ease-in-out duration-300 top-2 right-2"></app-icon>
+            </div>
+            <div class="w-full h-full">
+                <div class="h-full flex items-center justify-center p-8 z-10">
+                    <div class="text-lg font-bold text-primary text-center mb-3 italic">{{ dat.title }}</div>
+                </div>
+            </div>
+            <div class="relative" *ngIf="dataSubtitle">
+                <div class="absolute flex w-full text-sm text-secondary-text justify-center items-center bottom-2">{{ dataSubtitle(dat) }}</div>
+            </div>
+        </div>
+    </ng-container>
+    <div
+        *ngIf="addable"
+        class="bg-slate-400 rounded-lg shadow p-4 flex text-4xl flex-col justify-center items-center align-baseline hover:cursor-pointer hover:bg-primary transition ease-in-out duration-300 hover:text-white"
+        (click)="addNew.emit()"
+    >
+        <app-icon [type]="IconType.Plus"></app-icon>
+    </div>
+</div>
+
+<app-modal
+    #confirmationModal
+    title="Are you sure you want to delete this?"
+    (onClose)="selectedData = undefined;"
+>
+    <ng-container *ngIf="submitSubject$ | async as isSubmitting">
+        <div class="grid grid-cols-2 gap-10">
+            <app-button type="back" (click)="confModal.close()" [disabled]="isSubmitting != 1">Cancel</app-button>
+            <app-button type="submit" (click)="deleteEvent()" [loading]="isSubmitting != 1">Delete</app-button>
+        </div>
+    </ng-container>
+</app-modal>

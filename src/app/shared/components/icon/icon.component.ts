@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class IconComponent {
-  @Input() type!: IconType;
+  @Input() type!: IconType | keyof typeof IconType;
   @Input() clickable = true;
   IconType = IconType;
 }

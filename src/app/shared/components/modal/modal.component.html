@@ -1,6 +1,7 @@
-<!-- Only show the modal if isOpen is true -->
-<div *ngIf="isOpen" class="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 h-full" (click)="onOverlayClicked($event)">
-    <div class="bg-white md:rounded-lg shadow-lg w-full h-full md:h-auto md:max-w-lg p-6" (click)="$event.stopPropagation()">
+<ng-container *ngIf="isOpen">
+  <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 h-screen w-screen p-6 z-40" (click)="onOverlayClicked($event)"></div>
+  <div class="absolute top-0 md:top-4 md:ml-auto sm:p-3 md:p-6 z-50 w-full">
+    <div class="bg-white md:rounded-lg shadow-lg w-full h-full md:h-auto md:max-w-lg p-6 mx-auto" (click)="$event.stopPropagation()">
       <div class="flex justify-between items-center border-b pb-2 mb-4">
         <h3 class="text-lg font-semibold text-light-bg-text">{{ title }}</h3>
         <button (click)="close()" class="text-label hover:text-light-bg-text focus:outline-none transition ease-in-out duration-100">
@@ -11,5 +12,5 @@
         <ng-content></ng-content>
       </div>
     </div>
-</div>
-  
+  </div>
+</ng-container>

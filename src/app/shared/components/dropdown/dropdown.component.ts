@@ -1,18 +1,23 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, ControlContainer, FormControl, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
+import { IconType } from '../../model';
+import { CommonModule } from '@angular/common';
+import { ErrorsComponent } from '../errors/errors.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ErrorsComponent, IconComponent],
   templateUrl: './dropdown.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }],
 })
 export class DropdownComponent implements OnInit {
-  @Input() control!: string;
+  @Input() control!: AbstractControl;
   @Input() options!: string[] | { [key: string]: string };
   @Input() labelClass = '';
+  @Input() readonly = false;
+  IconType = IconType;
   formattedOptions: { [key: string]: string } = {};
   keys!: string[];
   active = false;
@@ -28,8 +33,8 @@ export class DropdownComponent implements OnInit {
   }
 
   updateValue(option: string, inp: HTMLInputElement) {
-    inp.value = this.formattedOptions[option]; 
-    this.active = !this.active; 
+    inp.value = this.formattedOptions[option];
+    this.active = !this.active;
     inp.dispatchEvent(new Event('input'));
   }
 }

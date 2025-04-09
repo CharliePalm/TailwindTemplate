@@ -1,0 +1,15 @@
+<ng-container *ngIf="(!checkTouched || control.touched) && control.value != undefined">
+    <div 
+        *ngFor="let error of keys"
+        class="text-red-400 italic text-sm py-1 error-wrapper"
+        #ref
+    >
+        <div
+            [attr.data-status]="errorMap.get(error)![0]"
+            [attr._]="setTimer(error)"
+            class="transition-all ease-in-out data-[status=inactive]:opacity-0 data-[status=active]:opacity-100 min-h-6 data-[status=inactive]:absolute data-[status=active]:relative "
+        >
+            {{ error }}
+        </div>
+    </div>
+</ng-container>

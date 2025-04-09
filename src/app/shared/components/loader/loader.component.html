@@ -1,10 +1,32 @@
-
 <div class="flex items-center justify-center ml-auto mr-auto mt-auto w-8 h-8" *ngIf="'sm' == size">
-    <div class="border-4 border-gray-300 border-t-primary rounded-full animate-spin w-8 h-8"></div>
+    <div
+        class="inset-0 flex items-center justify-center transition-opacity duration-500 top-40"
+        [ngClass]="{'opacity-0': !loading, 'opacity-100': loading}"
+    >
+        <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-backdrop"></div>
+    </div>
 </div>
-<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-24 h-24" *ngIf="'md' == size || !size">
-    <div class="border-4 border-gray-300 border-t-primary rounded-full animate-spin w-24 h-24"></div>
+<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-36 h-36" *ngIf="'md' == size">
+    <div
+        class="inset-0 flex items-center justify-center transition-opacity duration-500"
+        [ngClass]="{'opacity-0': !loading, 'opacity-100': loading}"
+    >
+        <div class="animate-spin rounded-full h-36 w-36 border-t-4 border-backdrop"></div>
+    </div>
 </div>
-<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-48 h-48" *ngIf="'lg' == size">
-    <div class="border-4 border-gray-300 border-t-primary rounded-full animate-spin w-48 h-48"></div>
+<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-64 h-64" *ngIf="'md' == size">
+    <div
+        class="inset-0 flex items-center justify-center transition-opacity duration-500"
+        [ngClass]="{'opacity-0': !loading, 'opacity-100': loading}"
+    >
+        <div class="animate-spin rounded-full h-64 w-64 border-t-4 border-backdrop"></div>
+    </div>
+</div>
+<div class="flex items-center justify-center ml-auto mr-auto mt-auto w-full h-full" *ngIf="'xl' == size">
+    <div
+        class="inset-0 flex items-center justify-center transition-opacity duration-700"
+        [ngClass]="{'opacity-0': !loading, 'opacity-100': loading}"
+    >
+        <div class="animate-spin rounded-full h-44 w-44 sm:h-72 sm:w-72 md:h-80 md:w-80 border-t-4 border-backdrop"></div>
+    </div>
 </div>

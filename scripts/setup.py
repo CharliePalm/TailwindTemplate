@@ -35,13 +35,14 @@ def update_website_template(name: str):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python update_template.py <name>")
-        sys.exit(1)
+      print("Usage: python update_template.py <name>")
+      sys.exit(1)
 
     # Get the website name from the command line arguments
     website_name = sys.argv[1]
 
     # Run the update function
-    update_website_template(website_name)
+    os.system(f'cp -r ../* ../{website_name}')
     os.system('rm -r -f .git')
     os.system('git init')
+    update_website_template(website_name)

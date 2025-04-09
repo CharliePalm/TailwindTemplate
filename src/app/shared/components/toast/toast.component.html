@@ -1,13 +1,14 @@
 <div class="fixed top-5 right-5 space-y-2 z-50">
-    <div *ngFor="let toast of toasts$ | async" 
-         class="p-4 text-white rounded shadow-lg"
+    <div *ngFor="let toast of toasts"
+         class="p-4 text-white rounded shadow-lg transition-opacity duration-300"
          [ngClass]="{
            'bg-success': toast.type === 'success',
            'bg-error': toast.type === 'error',
            'bg-primary': toast.type === 'info',
-           'bg-warning': toast.type === 'warning'
+           'bg-warning': toast.type === 'warning',
+           'opacity-0': !toast.active,
+           'opacity-100': toast.active,
          }">
       {{ toast.message }}
     </div>
 </div>
-  

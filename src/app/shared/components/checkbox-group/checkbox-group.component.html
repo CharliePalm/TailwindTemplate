@@ -1,0 +1,13 @@
+<div class="my-4">
+    <app-label>
+        <ng-content></ng-content>
+    </app-label>
+    <div class="flex-col justify-start relative">
+      <app-checkbox
+          *ngFor="let option of options; let index = index;"
+          [control]="option.control"
+          class="w-full z-10 cursor-pointer"
+        > {{option.label}}
+        </app-checkbox>
+    </div>
+</div>

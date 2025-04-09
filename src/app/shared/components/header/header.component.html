@@ -1,0 +1,31 @@
+<div class="w-full justify-center pt-8 italic hidden sm:flex sm:gap-10 md:gap-28 z-50" [ngClass]="{ 'opacity-0': !bringTheBeatIn, 'opacity-100': bringTheBeatIn }">
+    <div *ngFor="let option of options" class="cursor-pointer">
+        <button
+            class="hover:underline duration-400 transition-all ease-in-out disabled:text-gray-400 disabled:hover:no-underline disabled:hover:cursor-auto"
+            (click)="router.navigate([option]);"
+            [disabled]="isSelected(option)"
+        >{{option}}</button>
+    </div>
+</div>
+
+<div class="absolute top-4 right-4 flex justify-end sm:hidden h-0" [ngClass]="{ 'opacity-0': !bringTheBeatIn, 'opacity-100': bringTheBeatIn }">
+    <button class="relative w-10 h-10 flex flex-col justify-between items-center p-3 z-20" (click)="toggleMenu()">
+        <span style="height: 2px; --tw-translate-y: .9rem;" class="block w-6 bg-white rounded transition-all duration-500 opacity-80" [ngClass]="{'rotate-[225deg] translate-y-4': isOpen}"></span>
+        <span style="height: 2px;" class="block w-6 bg-white rounded transition-all duration-200" [ngClass]="{'opacity-0': isOpen, 'opacity-80': !isOpen}"></span>
+        <span style="height: 2px;" class="block w-6 bg-white rounded transition-all ease-in-out duration-500 opacity-80" [ngClass]="{'-rotate-[225deg]': isOpen}"></span>
+    </button>
+</div>
+
+<div
+    class="absolute top-0 left-0 grid max-h-screen h-full w-full pt-40 pb-40 bg-backdrop sm:hidden grid-cols-1 opacity-0 -z-10 duration-500 ease-in-out transition-opacity overflow-hidden" 
+    [ngClass]="{'opacity-100 z-10': isOpen}"
+>
+    <div *ngFor="let option of options; let index = index" class="text-center">
+        <button
+            class="hover:underline duration-300 transition-all ease-in-out disabled:text-gray-400 disabled:hover:no-underline disabled:hover:cursor-auto uppercase"
+            (click)="router.navigate([option]); toggleMenu()"
+            [disabled]="isSelected(option)"
+            [ngClass]="{'opacity-0 -translate-x-11': !optionActive?.[index], 'opacity-100 translate-0': optionActive ? optionActive[index] : true}"
+        >{{option}}</button>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { ControlContainer, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { IconType } from '../../model';
+import { LabelComponent } from '../label/label.component';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
-import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'app-date-picker',
@@ -26,7 +26,7 @@ export class DatePickerComponent {
   currentMonth: number = new Date().getMonth(); // 0-indexed (0=January)
   days: number[] = [];
   selectedDate: Date | undefined = this.initialDate ? new Date(this.initialDate) : undefined;
-  
+
   constructor(private eRef: ElementRef) {
     this.generateCalendar(this.currentYear, this.currentMonth);
   }

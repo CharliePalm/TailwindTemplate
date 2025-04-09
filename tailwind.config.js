@@ -130,14 +130,22 @@ module.exports = {
     },
     caretColor: ({ theme }) => theme('colors'),
     colors: ({ colors }) => ({
-      primary: '#4f81aa', // forest
-      foregroundSecondary: '#ffd150',
-      selected: '#6fc37a',
-      selectedHover: '#528e5a',
-      backgroundSecondary: '#20202088',
-      secondary: '#f9f9f9',
-      fail: '#cc3533',
-      warning: '#ffd150',
+      backdrop: '#fffff0', // the background of the page
+      label: '#6b7280', // used for text/textboxes/user inputs
+      'primary-focused': '#4068e5',
+      'primary': '#1d2a68', // primary button hover
+      'primary-light': '#bfdbfe', // not selected, but primary
+      'primary-tinted': '#dbeafe', // just a hint - background or smn
+      'secondary-focused': '#f3f4f6', // 'back' button hover
+      disabled: '#d1d5db',
+      'secondary-disabled-text': '#e5e7eb',
+      warning: '#991b1b',
+      text: '#f3b346',
+      'secondary-text': '#6b7280', // subtitles,
+      'light-bg-text': '#1f2937', // dark text for light backgrounds (only used on modal)
+      success: '#22c55e',
+      error: '#ef4444',
+
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,

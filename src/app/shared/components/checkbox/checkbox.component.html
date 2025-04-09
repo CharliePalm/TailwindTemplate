@@ -1,10 +1,13 @@
-<div class="flex items-center space-x-2 hover:cursor-pointer">
-    <input
-        type="checkbox"
-        [formControlName]="control"
-        class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-    />
-    <app-label class="-mb-1">
-        <ng-content></ng-content>
-    </app-label>
+<input
+  #inputEl
+  type="checkbox"
+  hidden
+  [formControl]="$any(control)"
+  class="peer"
+/>
+<div class="flex items-center space-x-2 min-h-6" (click)="inputEl.checked = !inputEl.checked">
+    <div class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 centered-flexbox">
+      <app-icon type="Check" [ngClass]="{'opacity-100': inputEl.checked}" class="transition-all opacity-0"></app-icon>
+    </div>
+    <span class="centered-flexbox hover:cursor-pointer"><ng-content></ng-content></span>
 </div>
