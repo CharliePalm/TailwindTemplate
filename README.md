@@ -1,6 +1,7 @@
 
 # Template
-This is a repo I use when starting out new websites. I always use tailwind and angular so this saves some of the somewhat cumbersome setup. Note that there is no style/content to this template, it's just the bones, configs, etc.
+This is a repo I use when starting out new websites. I always use tailwind and angular so this saves some of the somewhat cumbersome setup. 
+This also comes with a bunch of pre-loaded components. If you don't make any changes and just run start you can run through a quick demo of all the different functionality.
 
 To set this repo up with a new name:
   
