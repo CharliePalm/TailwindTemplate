@@ -1,23 +1,23 @@
 <div class="mb-2">
-    <app-label>
-        <ng-content></ng-content>
-    </app-label>
-    <div class=" flex flex-col items-center">
-        <div class="flex relative w-full">
-            <app-radio-button
-                *ngFor="let option of optionsArr; let index = index;"
-                [selected]="control.value == option.value"
-                (click)="control.setValue(option.value); selectedIndex = index"
-                [label]="option.label"
-                [mode]="mode"
-                class="w-full text-center z-10 cursor-pointer"
-            >
-            </app-radio-button>
-            <div 
-                *ngIf="mode == 'fancy' && selectedIndex > -1" 
-                class="flex items-center justify-center truncate uppercase select-none font-semibold text-lg rounded-full p-0 h-full bg-primary absolute transform transition-transform"
-                [ngStyle]="getWrapperStyle()"
-            ></div>
-        </div>
+  <app-label>
+    <ng-content></ng-content>
+  </app-label>
+  <div class="flex flex-col items-center">
+    <div class="relative flex w-full">
+      <app-radio-button
+        *ngFor="let option of optionsArr; let index = index"
+        [selected]="control.value == option.value"
+        (click)="control.setValue(option.value); selectedIndex = index"
+        [label]="option.label"
+        [mode]="mode"
+        class="z-10 w-full cursor-pointer text-center"
+      >
+      </app-radio-button>
+      <div
+        *ngIf="mode == 'fancy' && selectedIndex > -1"
+        class="bg-primary absolute flex h-full translate-x-0 items-center justify-center truncate rounded-full p-0 text-lg font-semibold uppercase transition-transform select-none"
+        [ngStyle]="getWrapperStyle()"
+      ></div>
     </div>
+  </div>
 </div>

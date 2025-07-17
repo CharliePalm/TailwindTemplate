@@ -1,28 +1,34 @@
-
-<ng-container *ngIf="type != 'text'">
+<div class="m-2">
+  <ng-container *ngIf="type != 'text'">
     <button
-        class="w-full px-4 py-2 h-full font-semibold disabled:bg-disabled disabled:text-secondary-text disabled:opacity-45 rounded-lg duration-300 transition ease-in-out italic"
-        [ngClass]="{'bg-transparent text-secondary-disabled-text enabled:hover:bg-secondary-focused enabled:hover:text-secondary-focused': type == 'back', 'enabled:hover:bg-primary-focused enabled:bg-primary text-white': type != 'back'}"
-        [disabled]="disabled || loading"
+      class="disabled:text-secondary-text h-full w-full min-w-32 rounded-lg px-4 py-2 font-semibold italic transition duration-300 ease-in-out enabled:hover:cursor-pointer disabled:opacity-45"
+      [ngClass]="{
+        'text-secondary-disabled-text enabled:hover:bg-secondary-focused enabled:hover:text-secondary-focused bg-transparent':
+          type == 'back',
+        'enabled:hover:bg-primary-focused bg-primary text-white':
+          type != 'back',
+      }"
+      [disabled]="disabled || loading"
     >
-        <ng-container *ngIf="!loading; else loader">
-            <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
-        </ng-container>
-        <ng-template #loader><app-loader size="sm"></app-loader></ng-template>
+      <ng-container *ngIf="!loading; else loader">
+        <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
+      </ng-container>
+      <ng-template #loader><app-loader size="sm"></app-loader></ng-template>
     </button>
-</ng-container>
-<ng-container *ngIf="type == 'text'">
+  </ng-container>
+  <ng-container *ngIf="type == 'text'">
     <div
-        class="px-4 py-2 font-semibold text-secondary-text hover:text-primary duration-300 transition ease-in-out hover:cursor-pointer disabled:cursor-auto"
-        [attr.disabled]="disabled || loading"
+      class="text-secondary-text hover:text-primary px-4 py-2 font-semibold transition duration-300 ease-in-out hover:cursor-pointer disabled:cursor-auto"
+      [attr.disabled]="disabled || loading"
     >
-        <ng-container *ngIf="!loading; else loader">
-            <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
-        </ng-container>
-        <ng-template #loader><app-loader size="sm"></app-loader></ng-template>
+      <ng-container *ngIf="!loading; else loader">
+        <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
+      </ng-container>
+      <ng-template #loader><app-loader size="sm"></app-loader></ng-template>
     </div>
-</ng-container>
+  </ng-container>
+</div>
 
 <ng-template #tempOutlet>
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </ng-template>

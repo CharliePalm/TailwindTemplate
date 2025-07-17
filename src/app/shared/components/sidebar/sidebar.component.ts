@@ -1,36 +1,27 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { SidebarOption } from '../../model';
+import { Router, RouterModule } from '@angular/router';
+import { timer } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  imports: [CommonModule],
-  standalone: true,
+  imports: [CommonModule, RouterModule],
 })
-export class SidebarComponent implements OnInit {
-  @Output() optionSelected: EventEmitter<SidebarOption> = new EventEmitter<SidebarOption>();
-  @Input() options: SidebarOption[] = Object.values(SidebarOption) as any as SidebarOption[];
-  isMobile: boolean = false;
+export class SidebarComponent {
   expanded = false;
-
-  ngOnInit(): void {
-    this.windowSizeCheck();
-  }
-
-  toggleSidebar() {
+  options = Object.keys(SidebarOption);
+  toggleSidebar = () => {
     this.expanded = !this.expanded;
-    document.body.classList.toggle('no-scroll', this.expanded && this.isMobile);
-  }
+    // timer(100).subscribe(() =>
+    //   document.getElementById("body")?.classList.toggle("bg-[#4d3e28]"),
+    // );
+  };
 
-  selected(option: SidebarOption) {
-    this.toggleSidebar();
-    this.optionSelected.emit(option);
-  }
-  // todo - rewrite
-  @HostListener("window:resize", []) windowSizeCheck() {
-    if (this.expanded) this.toggleSidebar();
-    this.isMobile = window.outerWidth <= 850 || window.innerWidth <= 850;
+  constructor(private router: Router) {}
+  public get selectedPage(): SidebarOption | '' {
+    return this.router.url.slice(1) as SidebarOption | '';
   }
 }

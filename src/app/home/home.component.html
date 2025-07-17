@@ -1,97 +1,110 @@
+<app-sidebar></app-sidebar>
+
 <ng-container *ngIf="form">
-    <div class="flex justify-center items-center w-full flex-col gap-4 text-white" [formGroup]="form">
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Buttons
-            </div>
-            <div class="flex justify-center items-center w-full">
-                <app-button >Enabled Button</app-button>
-                <app-button [disabled]="true">Disabled button</app-button>
-                Loading button:<app-button [loading]="true"></app-button>
-            </div>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Checkbox
-            </div>
-            <app-checkbox control="1">Checkbox label</app-checkbox>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Date Picker
-            </div>
-            <app-date-picker control="2" class="text-primary">Pick date</app-date-picker>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Dropdown
-            </div>
-            <app-dropdown [options]="['Option 1', 'Option 2', 'Option 3']" control='3'></app-dropdown>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Icons
-            </div>
-            <div class="flex justify-center items-center">
-                <div *ngFor="let icon of IconType" >
-                    <app-icon [type]="$any(icon)"></app-icon>
-                </div>
-            </div>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Loader
-            </div>
-            <app-loader size="sm" class="p-4"></app-loader>
-            <app-loader size="md" class="p-4"></app-loader>
-            <app-loader size="lg" class="p-4"></app-loader>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Modal
-            </div>
-            <app-button (click)="modal.open()">Open modal</app-button>
-            <app-modal title="Modal title" #modal><div>Modal body</div></app-modal>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Radio Button
-            </div>
-            <app-radio-button [selected]="false">Unselected</app-radio-button>
-            <app-radio-button [selected]="true">Selected</app-radio-button>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Radio Group
-            </div>
-            <app-radio-group mode="simple" [options]="{'option 1': 1, 'options 2': 2, 'option 3': 3}" [control]="$any(form.get('4'))">Simple radio group</app-radio-group>
-            <app-radio-group mode="fancy" [options]="{'option 1': 1, 'options 2': 2, 'option 3': 3}" [control]="$any(form.get('5'))">Fancy radio group</app-radio-group>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Sidebar
-            </div>
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Textbox
-            </div>
-            <app-textbox [control]="'6'">Textbox Label</app-textbox>
-        </div>
-        <div class="w-10/12 rounded-lg bg-gray-700 p-8">
-            <div class="text-4xl text-center w-full p-4">
-                Toast
-            </div>
-            <div class="grid grid-cols-2 grid-rows-2 w-48 gap-6">
-                <div class="bg-primary rounded-lg cursor-pointer" (click)="toastService.show('Success!', 'success')">Success</div>
-                <div class="bg-primary rounded-lg cursor-pointer" (click)="toastService.show('Error :(', 'error')">Error</div>
-    
-                <div class="bg-primary rounded-lg cursor-pointer" (click)="toastService.show('Warning :/', 'warning')">Warning</div>
-                <div class="bg-primary rounded-lg cursor-pointer" (click)="toastService.show('Info :|', 'info')">Info</div>
-            </div>
-            <app-toast></app-toast>
-        </div>
+  <div
+    class="flex w-full flex-col items-center justify-center gap-4 text-white"
+    [formGroup]="form"
+  >
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Buttons</div>
+      <div class="flex w-full items-center justify-center">
+        <app-button>Enabled Button</app-button>
+        <app-button [disabled]="true">Disabled button</app-button>
+        Loading button:<app-button [loading]="true"></app-button>
+      </div>
     </div>
-    
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Checkbox</div>
+      <app-checkbox control="1">Checkbox label</app-checkbox>
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Date Picker</div>
+      <app-date-picker control="2" class="text-primary"
+        >Pick date</app-date-picker
+      >
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Dropdown</div>
+      <app-dropdown
+        [options]="['Option 1', 'Option 2', 'Option 3']"
+        control="3"
+      ></app-dropdown>
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Icons</div>
+      <div class="flex items-center justify-center">
+        <div *ngFor="let icon of IconType">
+          <app-icon [type]="$any(icon)"></app-icon>
+        </div>
+      </div>
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Loader</div>
+      <app-loader size="sm" class="p-4"></app-loader>
+      <app-loader size="md" class="p-4"></app-loader>
+      <app-loader size="lg" class="p-4"></app-loader>
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Modal</div>
+      <app-button (click)="modal.open()">Open modal</app-button>
+      <app-modal title="Modal title" #modal
+        ><div>this is the modal body</div></app-modal
+      >
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Radio Button</div>
+      <app-radio-button [selected]="false">Unselected</app-radio-button>
+      <app-radio-button [selected]="true">Selected</app-radio-button>
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Radio Group</div>
+      <app-radio-group
+        mode="simple"
+        [options]="{ 'option 1': 1, 'options 2': 2, 'option 3': 3 }"
+        [control]="$any(form.get('4'))"
+        >Simple radio group</app-radio-group
+      >
+      <app-radio-group
+        mode="fancy"
+        [options]="{ 'option 1': 1, 'options 2': 2, 'option 3': 3 }"
+        [control]="$any(form.get('5'))"
+        >Fancy radio group</app-radio-group
+      >
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Textbox</div>
+      <app-textbox [control]="'6'">Textbox Label</app-textbox>
+    </div>
+    <div class="w-10/12 rounded-lg bg-gray-700 p-8">
+      <div class="w-full p-4 text-center text-4xl">Toast</div>
+      <div class="grid w-48 grid-cols-2 grid-rows-2 gap-6">
+        <div
+          class="bg-primary cursor-pointer rounded-lg"
+          (click)="toastService.show('Success!', 'success')"
+        >
+          Success
+        </div>
+        <div
+          class="bg-primary cursor-pointer rounded-lg"
+          (click)="toastService.show('Error :(', 'error')"
+        >
+          Error
+        </div>
+
+        <div
+          class="bg-primary cursor-pointer rounded-lg"
+          (click)="toastService.show('Warning :/', 'warning')"
+        >
+          Warning
+        </div>
+        <div
+          class="bg-primary cursor-pointer rounded-lg"
+          (click)="toastService.show('Info :|', 'info')"
+        >
+          Info
+        </div>
+      </div>
+      <app-toast></app-toast>
+    </div>
+  </div>
 </ng-container>

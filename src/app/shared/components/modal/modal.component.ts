@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
 })
 export class ModalComponent {
-  @Input() title: string = '';      // Optional modal title
-  @Input() isOpen: boolean = false;   // Control modal visibility
+  @Input() title: string = ''; // Optional modal title
+  @Input() isOpen: boolean = false; // Control modal visibility
   @Output() onClose = new EventEmitter<void>();
 
   // Closes the modal by emitting the close event

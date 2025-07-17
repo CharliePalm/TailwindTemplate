@@ -1,10 +1,28 @@
-<div class="flex items-center space-x-2 hover:cursor-pointer">
-    <input
-        type="checkbox"
-        [formControlName]="control"
-        class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-    />
-    <app-label class="-mb-1">
-        <ng-content></ng-content>
-    </app-label>
-</div>
+<label class="group flex cursor-pointer items-center space-x-3 select-none">
+  <input
+    type="checkbox"
+    [formControlName]="control"
+    class="peer sr-only"
+    #peer
+  />
+  <div
+    class="peer-checked:border-primary peer-checked:bg-primary group-hover:border-primary group-focus-within:ring-primary flex h-5 w-5 items-center justify-center rounded border-2 border-gray-300 bg-gray-100 transition group-focus-within:ring-2"
+  >
+    <svg
+      class="h-3 w-3 text-white"
+      [ngClass]="{ block: peer.checked, hidden: !peer.checked }"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M16.707 5.293a1 1 0 010 1.414l-8.01 8.01a1 1 0 01-1.414 0l-3.99-3.99a1 1 0 111.414-1.414l3.283 3.283 7.303-7.303a1 1 0 011.414 0z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </div>
+  <app-label class="group-hover:text-primary text-sm text-gray-800 transition">
+    <ng-content></ng-content>
+  </app-label>
+</label>

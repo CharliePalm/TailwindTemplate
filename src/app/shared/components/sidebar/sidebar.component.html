@@ -1,18 +1,44 @@
-<button
-  class="sidebar-toggle-button"
-  [ngClass]="{ active: expanded }"
-  (click)="toggleSidebar()"
->
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-</button>
+<div class="absolute top-4 right-4 z-50 flex h-0 justify-end sm:hidden">
+  <button
+    class="relative z-20 flex h-10 w-10 flex-col items-center justify-between p-3"
+    (click)="toggleSidebar()"
+  >
+    <span
+      style="height: 2px; --tw-translate-y: 0.9rem"
+      class="bg-off-white block w-6 rounded opacity-80 transition-all duration-500"
+      [ngClass]="{ 'translate-y-4 rotate-[225deg]': expanded }"
+    ></span>
+    <span
+      style="height: 2px"
+      class="bg-off-white block w-6 rounded transition-all duration-200"
+      [ngClass]="{ 'opacity-0': expanded, 'opacity-80': !expanded }"
+    ></span>
+    <span
+      style="height: 2px"
+      class="bg-off-white block w-6 rounded opacity-80 transition-all duration-500 ease-in-out"
+      [ngClass]="{ '-rotate-[225deg]': expanded }"
+    ></span>
+  </button>
+</div>
 
-<aside class="sidebar" [ngClass]="{open : expanded, closed : !expanded, noscroll : this.expanded}">
-    <div class="grid grid-cols-1">
-        <div *ngFor="let option of options">
-            <i [ngClass]="{open : expanded, closed : !expanded}" (click)="selected(option)">about</i>
-        </div>
-    </div>
-</aside>
-  
+<div
+  class="absolute flex h-[120dvh] w-screen flex-col items-center justify-center gap-10 bg-[#4d3e28] transition-all duration-500"
+  [ngClass]="{
+    'z-10 translate-y-0': expanded,
+    '-z-50 -translate-y-[100dvh] opacity-0': !expanded,
+  }"
+>
+  <a
+    *ngFor="let option of options"
+    [routerLink]="option"
+    (click)="toggleSidebar()"
+    [ngClass]="{
+      'opacity-90 hover:cursor-pointer hover:underline hover:opacity-100':
+        selectedPage !== option,
+      'opacity-80 hover:cursor-default': selectedPage === option,
+    }"
+  >
+    {{ option }}
+  </a>
+  <div class="bottom-4 left-[50%]">Sidebar bottom here</div>
+</div>
